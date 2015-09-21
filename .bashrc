@@ -1,8 +1,11 @@
 source <PathToGit>/Git/etc/git-prompt.sh
 source <PathToGit>/Git/etc/git-completion.bash
 
-alias gl='git --no-pager log --decorate --oneline'
+alias gl='git log --decorate --oneline'
 alias gs='git status'
+
+alias iba='ionic build android'
+alias ira="ionic run android"
 
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
 #  by Mike Stewart - http://MediaDoneRight.com
@@ -21,6 +24,7 @@ Green="\[\033[0;32m\]"        # Green
 Yellow="\[\033[0;33m\]"       # Yellow
 Blue="\[\033[0;34m\]"         # Blue
 Purple="\[\033[0;35m\]"       # Purple
+Orange="\[\033[38;5;214m\]"   # Orange
 Cyan="\[\033[0;36m\]"         # Cyan
 White="\[\033[0;37m\]"        # White
 
@@ -96,7 +100,7 @@ Jobs="\j"
 # This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
 # I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
 
-export PS1=$BGreen"[\u]"$Color_Off'$(git branch &>/dev/null;\
+export PS1=$BGreen"[\u@\h]"$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
@@ -105,8 +109,11 @@ if [ $? -eq 0 ]; then \
   else \
     # @5 - Changes to working tree
     echo "'$BIRed'"$(__git_ps1 " {%s}"); \
-  fi) '$BYellow$PathShort$Color_Off'\$ "; \
+  fi) '$Orange$PathShort$Color_Off'\$ "; \
 else \
   # @2 - Prompt when not in GIT repo
-  echo " '$Yellow$PathShort$Color_Off'\$ "; \
+  echo " '$Orange$PathShort$Color_Off'\$ "; \
 fi)'
+
+# gulp task autocompletion
+eval "$(gulp --completion=bash)"
