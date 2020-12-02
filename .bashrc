@@ -4,9 +4,6 @@ source <PathToGit>/Git/etc/git-completion.bash
 alias gl='git log --decorate --oneline'
 alias gs='git status'
 
-alias iba='ionic build android'
-alias ira="ionic run android"
-
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
 #  by Mike Stewart - http://MediaDoneRight.com
 
