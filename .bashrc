@@ -1,6 +1,10 @@
 source <PathToGit>/Git/etc/git-prompt.sh
 source <PathToGit>/Git/etc/git-completion.bash
 
+ps ax | grep [s]sh-agent | xargs kill {} &> /dev/null
+eval `ssh-agent -s`
+ssh-add ~/.ssh/id_ed25519
+
 alias gl='git log --decorate --oneline'
 alias gs='git status'
 
